@@ -1,6 +1,6 @@
 plugins {
     id("fabric-loom") version "0.8-SNAPSHOT"
-    kotlin("jvm") version "1.5.0"
+    kotlin("jvm") version "1.5.10"
     `maven-publish`
 }
 
