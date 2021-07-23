@@ -1,33 +1,25 @@
+import java.net.URL
+import java.net.HttpURLConnection
+
 plugins {
     id("fabric-loom") version "0.8-SNAPSHOT"
-    kotlin("jvm") version "1.5.0"
+    kotlin("jvm") version "1.5.20"
     `maven-publish`
 }
 
 repositories {
-
+    maven(terraformersMaven) { name = "TerraformersMC" }
 }
 
 dependencies {
-    val minecraftVersion: String by project
-    val yarnVersion: String by project
-    val floaderVersion: String by project
-    val fapiVersion: String by project
-    val flkVersion: String by project
+    minecraft(libs.minecraft)
+    mappings(libs.fabric.yarn)
+    modImplementation(libs.bundles.fabric)
 
-    minecraft("com.mojang:minecraft:$minecraftVersion")
-    mappings("net.fabricmc:yarn:$yarnVersion:v2")
-    modImplementation("net.fabricmc:fabric-loader:$floaderVersion")
-
-    modImplementation("net.fabricmc.fabric-api:fabric-api:$fapiVersion")
-
-    modImplementation("net.fabricmc:fabric-language-kotlin:$flkVersion")
+    modImplementation(libs.modmenu)
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_16
-    targetCompatibility = JavaVersion.VERSION_16
-
     withSourcesJar()
     withJavadocJar()
 }
@@ -40,7 +32,10 @@ tasks {
         options.release.set(16)
     }
 
-    //compileKotlin.kotlinOptions.jvmTarget = "16"
+    compileKotlin {
+        kotlinOptions.jvmTarget = "16"
+    }
+
     jar {
         from("LICENSE") {
             val archivesBaseName: String by rootProject
@@ -60,9 +55,7 @@ tasks {
 publishing {
     publications {
         register<MavenPublication>("mavenJava") {
-            from(components["java"])
             // add all the jars that should be included when publishing to maven
-
             artifact(tasks.remapJar) {
                 classifier = null
             }
@@ -75,4 +68,24 @@ publishing {
     repositories {
         mavenLocal()
     }
+}
+
+
+// Temporary hack since TerraformersMC's maven is straight up cursed
+val terraformersMaven: String
+    get() {
+        val terraformersUrl = "https://maven.terraformersmc.com/"
+        return if (pingUrl(terraformersUrl))
+            terraformersUrl
+        else
+            "https://maven.kotlindiscord.com/repository/terraformers/"
+    }
+
+
+fun pingUrl(address: String) = try {
+    val conn = URL(address).openConnection() as HttpURLConnection
+    val responseCode = conn.responseCode
+    responseCode in 200..399
+} catch (ignored: java.io.IOException) {
+    false
 }

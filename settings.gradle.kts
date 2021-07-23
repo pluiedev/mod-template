@@ -1,12 +1,21 @@
 pluginManagement {
     repositories {
         mavenCentral()
-        maven(
-            //name = "Fabric",
-            url = "https://maven.fabricmc.net/"
-        )
+        maven("https://maven.fabricmc.net/") {
+            name = "Fabric"
+        }
         gradlePluginPortal()
     }
 }
 
 rootProject.name = "mod-template"
+
+enableFeaturePreview("VERSION_CATALOGS")
+
+dependencyResolutionManagement {
+    versionCatalogs {
+        create("libs") {
+            from(files("libs.versions.toml"))
+        }
+    }
+}
