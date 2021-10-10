@@ -2,7 +2,7 @@ import java.net.URL
 import java.net.HttpURLConnection
 
 plugins {
-    id("fabric-loom") version "0.9-SNAPSHOT"
+    id("fabric-loom") version "0.10-SNAPSHOT"
     kotlin("jvm") version "1.5.31"
     `maven-publish`
 }
