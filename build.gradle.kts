@@ -8,7 +8,7 @@ plugins {
 }
 
 repositories {
-    maven(terraformersMaven) { name = "TerraformersMC" }
+    maven("https://maven.terraformersmc.com/") { name = "TerraformersMC" }
 }
 
 dependencies {
@@ -68,9 +68,9 @@ publishing {
 }
 
 
-// Temporary hack since TerraformersMC's maven is straight up cursed
-val terraformersMaven: String = "https://maven.terraformersmc.com/"
 /*
+// Temporary hack since TerraformersMC's maven is straight up cursed
+val terraformersMaven: String
     get() {
         val terraformersUrl = "https://maven.terraformersmc.com/"
         return if (pingUrl(terraformersUrl))
