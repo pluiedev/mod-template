@@ -68,9 +68,9 @@ publishing {
 }
 
 
-/*
 // Temporary hack since TerraformersMC's maven is straight up cursed
-val terraformersMaven: String
+val terraformersMaven: String = "https://maven.terraformersmc.com/"
+/*
     get() {
         val terraformersUrl = "https://maven.terraformersmc.com/"
         return if (pingUrl(terraformersUrl))
