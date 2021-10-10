@@ -8,7 +8,7 @@ plugins {
 }
 
 repositories {
-    maven(terraformersMaven) { name = "TerraformersMC" }
+    maven("https://maven.terraformersmc.com/") { name = "TerraformersMC" }
 }
 
 dependencies {
