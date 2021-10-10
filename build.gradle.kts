@@ -2,8 +2,8 @@ import java.net.URL
 import java.net.HttpURLConnection
 
 plugins {
-    id("fabric-loom") version "0.8-SNAPSHOT"
-    kotlin("jvm") version "1.5.20"
+    id("fabric-loom") version "0.9-SNAPSHOT"
+    kotlin("jvm") version "1.5.31"
     `maven-publish`
 }
 
@@ -56,9 +56,6 @@ publishing {
     publications {
         register<MavenPublication>("mavenJava") {
             // add all the jars that should be included when publishing to maven
-            artifact(tasks.remapJar) {
-                classifier = null
-            }
             artifact(tasks["sourcesJar"]) {
                 classifier = "sources"
                 builtBy(tasks.remapSourcesJar)
@@ -71,6 +68,7 @@ publishing {
 }
 
 
+/*
 // Temporary hack since TerraformersMC's maven is straight up cursed
 val terraformersMaven: String
     get() {
@@ -89,3 +87,4 @@ fun pingUrl(address: String) = try {
 } catch (ignored: java.io.IOException) {
     false
 }
+*/
