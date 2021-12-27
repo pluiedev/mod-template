@@ -3,7 +3,7 @@ import java.net.HttpURLConnection
 
 plugins {
     id("fabric-loom") version "0.10-SNAPSHOT"
-    kotlin("jvm") version "1.5.31"
+    kotlin("jvm") version "1.6.10"
     `maven-publish`
 }
 
@@ -13,7 +13,11 @@ repositories {
 
 dependencies {
     minecraft(libs.minecraft)
-    mappings(libs.fabric.yarn)
+    mappings(libs.fabric.yarn) {
+        artifact {
+            classifier = "v2"
+        }
+    }
     modImplementation(libs.bundles.fabric)
 
     modImplementation(libs.modmenu)
@@ -28,12 +32,12 @@ tasks {
     withType<JavaCompile> {
         options.encoding = "UTF-8"
 
-        // Minecraft 1.17 (21w19a) upwards uses Java 16.
-        options.release.set(16)
+        // Minecraft 1.18 upwards uses Java 17.
+        options.release.set(17)
     }
 
     compileKotlin {
-        kotlinOptions.jvmTarget = "16"
+        kotlinOptions.jvmTarget = "17"
     }
 
     jar {

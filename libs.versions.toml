@@ -7,24 +7,24 @@ fabric = [
 
 [libraries.minecraft]
 module = "com.mojang:minecraft"
-version = "21w40a"
+version = "1.18.1"
 
 [libraries.fabric-yarn]
 module = "net.fabricmc:yarn"
-version = "21w40a+build.1"
+version = "1.18.1+build.12"
 
 [libraries.fabric-loader]
 module = "net.fabricmc:fabric-loader"
-version = "0.12.1"
+version = "0.12.12"
 
 [libraries.fabric-api]
 module = "net.fabricmc.fabric-api:fabric-api"
-version = "0.40.8+1.18"
+version = "0.45.0+1.18"
 
 [libraries.fabric-language-kotlin]
 module = "net.fabricmc:fabric-language-kotlin"
-version = "1.6.5+kotlin.1.5.31"
+version = "1.7.1+kotlin.1.6.10"
 
 [libraries.modmenu]
 module = "com.terraformersmc:modmenu"
-version = "3.0.0"
+version = "3.0.1"
