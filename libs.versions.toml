@@ -11,15 +11,15 @@ version = "1.18.1"
 
 [libraries.fabric-yarn]
 module = "net.fabricmc:yarn"
-version = "1.18.1+build.12"
+version = "1.18.1+build.22"
 
 [libraries.fabric-loader]
 module = "net.fabricmc:fabric-loader"
-version = "0.12.12"
+version = "0.13.3"
 
 [libraries.fabric-api]
 module = "net.fabricmc.fabric-api:fabric-api"
-version = "0.45.0+1.18"
+version = "0.46.4+1.18"
 
 [libraries.fabric-language-kotlin]
 module = "net.fabricmc:fabric-language-kotlin"
