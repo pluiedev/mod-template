@@ -59,36 +59,9 @@ tasks {
 publishing {
     publications {
         register<MavenPublication>("mavenJava") {
-            // add all the jars that should be included when publishing to maven
-            artifact(tasks["sourcesJar"]) {
-                classifier = "sources"
-                builtBy(tasks.remapSourcesJar)
-            }
+
         }
     }
     repositories {
-        mavenLocal()
     }
 }
-
-
-/*
-// Temporary hack since TerraformersMC's maven is straight up cursed
-val terraformersMaven: String
-    get() {
-        val terraformersUrl = "https://maven.terraformersmc.com/"
-        return if (pingUrl(terraformersUrl))
-            terraformersUrl
-        else
-            "https://maven.kotlindiscord.com/repository/terraformers/"
-    }
-
-
-fun pingUrl(address: String) = try {
-    val conn = URL(address).openConnection() as HttpURLConnection
-    val responseCode = conn.responseCode
-    responseCode in 200..399
-} catch (ignored: java.io.IOException) {
-    false
-}
-*/
